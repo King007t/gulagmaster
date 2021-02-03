@@ -37,7 +37,7 @@ client.on('voiceStateUpdate', (oldState, newState) => {
     if (oldState.member.user.bot) return;
 
     if(newState.channelID == "806455732236320788"){
-        newState.member.roles.add(newState.guild.roles.cache.get("806462770982813707"));
+        //newState.member.roles.add(newState.guild.roles.cache.get("806462770982813707"));
         if(playing){
             return;
         }
