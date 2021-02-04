@@ -43,7 +43,7 @@ function play(){
 
 client.on("message", (msg) => {
 
-    if(msg.member.user.bot){
+    if(msg.author.bot){
         return;
     }
 
