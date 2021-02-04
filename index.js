@@ -43,6 +43,10 @@ function play(){
 
 client.on("message", (msg) => {
 
+    if(msg.member.user.bot){
+        return;
+    }
+
     if(msg.channel.id == textID){
         var play = null;
         var index = -1;
