@@ -75,6 +75,7 @@ client.on("message", (msg) => {
         }
 
         if(a == -1){
+            msg.channel.send("Wrong input.");
             return;
         }
 
