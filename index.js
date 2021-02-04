@@ -42,7 +42,10 @@ function play(){
 }
 
 client.on("message", (msg) => {
-    if(msg.member.user.bot) return;
+    if(msg.member.user == null){
+        return;
+    }
+    if(msg.member.user.bot) {return};
 
     if(msg.channel.id == textID){
         var play = null;
@@ -73,6 +76,8 @@ client.on("message", (msg) => {
             case("PAPER"):
             a = 2;
             break;
+            default:
+            return;
         }
 
         if(e == 0){
