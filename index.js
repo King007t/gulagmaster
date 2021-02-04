@@ -42,6 +42,9 @@ function play(){
 }
 
 client.on("message", (msg) => {
+    if(msg.channel.id != textID){
+        return;
+    }
     if(msg.member.user == null){
         return;
     }
