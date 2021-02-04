@@ -66,20 +66,18 @@ client.on("message", (msg) => {
         var a = -1;
         var e  = Math.floor(Math.random() * 3);
 
-        switch(msg.content.toUpperCase){
-            case("SCISSORS"):
+        if(msg.content == "scissors"){
             a = 0;
-            break;
-            case("ROCK"):
+        }
+        else if(msg.content == "rock"){
             a = 1;
-            break;
-            case("PAPER"):
+        }
+        else if(msg.content == "paper"){
             a = 2;
-            break;
         }
 
         if(a == -1){
-            msg.channel.send("Wrong input.");
+            msg.channel.send("FFFFFFFFFFFFFFFFUUUUUUUUUUUUUUUUUUUUUUUUUCCCCCCCCCCCCCCCCCCCCCCCKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKK");
             return;
         }
 
@@ -174,7 +172,7 @@ client.on('voiceStateUpdate', (oldState, newState) => {
     if (oldState.member.user.bot) return;
 
     if(newState.channelID == chid){
-        client.channels.cache.get(textID).send(oldState.member.user.username + ", play rock-paper-scissors with me to earn your freedom.");
+        client.channels.cache.get(textID).send(oldState.member.user.username + ", play rock-paper-scissors with me to earn your freedom. (please type in lowercase. working on it)");
         newState.member.roles.add(newState.guild.roles.cache.get(roleID));
         if(playing){
             return;
