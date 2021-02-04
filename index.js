@@ -77,7 +77,6 @@ client.on("message", (msg) => {
         }
 
         if(a == -1){
-            msg.channel.send("FFFFFFFFFFFFFFFFUUUUUUUUUUUUUUUUUUUUUUUUUCCCCCCCCCCCCCCCCCCCCCCCKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKK");
             return;
         }
 
@@ -172,7 +171,7 @@ client.on('voiceStateUpdate', (oldState, newState) => {
     if (oldState.member.user.bot) return;
 
     if(newState.channelID == chid){
-        client.channels.cache.get(textID).send(oldState.member.user.username + ", play rock-paper-scissors with me to earn your freedom. (please type in lowercase. working on it)");
+        client.channels.cache.get(textID).send(oldState.member.user.username + ", play rock-paper-scissors with me to earn your freedom. Wait until bot says 'another round' until you make your next move! (please type in lowercase. working on it)");
         newState.member.roles.add(newState.guild.roles.cache.get(roleID));
         if(playing){
             return;
