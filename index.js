@@ -42,13 +42,10 @@ function play(){
 }
 
 client.on("message", (msg) => {
+
     if(msg.channel.id != textID){
         return;
     }
-    if(msg.member.user == null){
-        return;
-    }
-    if(msg.member.user.bot) {return};
 
     if(msg.channel.id == textID){
         var play = null;
@@ -66,7 +63,7 @@ client.on("message", (msg) => {
             index = plays.length-1;
         }
 
-        var a = 0;
+        var a = -1;
         var e  = Math.floor(Math.random() * 3);
 
         switch(msg.content.toUpperCase){
@@ -79,7 +76,9 @@ client.on("message", (msg) => {
             case("PAPER"):
             a = 2;
             break;
-            default:
+        }
+
+        if(a == -1){
             return;
         }
 
