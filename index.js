@@ -135,10 +135,6 @@ client.on("message", (msg) => {
                 break;
             }
         }
-        console.log("\n");
-        console.log(plays[index]);
-        console.log("--------------------------------------------------------------------------------------------------");
-        console.log(plays);
 
         if(plays[index].turns == 3){
             if(plays[index].pWins > plays[index].aWins){
