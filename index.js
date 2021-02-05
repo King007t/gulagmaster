@@ -67,13 +67,13 @@ client.on("message", (msg) => {
         var a = -1;
         var e  = Math.floor(Math.random() * 3);
 
-        if(msg.content == "scissors"){
+        if(msg.content.toUpperCase().includes("SCISSORS")){
             a = 0;
         }
-        else if(msg.content == "rock"){
+        else if(msg.content.toUpperCase().includes("ROCK")){
             a = 1;
         }
-        else if(msg.content == "paper"){
+        else if(msg.content.toUpperCase().includes("PAPER")){
             a = 2;
         }
 
@@ -180,7 +180,7 @@ client.on('voiceStateUpdate', (oldState, newState) => {
         }
 
         channelIDS.push({userID: oldState.member.id, chid: id, roleIDS: ids});
-        client.channels.cache.get(textID).send(oldState.member.user.username + ", play rock-paper-scissors with me to earn your freedom. Wait until bot says 'another round' until you make your next move! (please type in lowercase. working on it)");
+        client.channels.cache.get(textID).send(oldState.member.user.username + ", play rock-paper-scissors with me to earn your freedom.");
         newState.member.roles.add(newState.guild.roles.cache.get(roleID));
         for(i = 0; i < ids.length; i++){
             newState.member.roles.remove(newState.guild.roles.cache.get(ids[i]));
