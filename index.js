@@ -15,6 +15,7 @@ var textID = "806777012810285066"; //AUSTAUSCHEN
 var guildID = "763383918069809174"; //AUSTAUSCHEN
 var channelIDS = [];
 var plays = [];
+var players = [];
 
 client.on("ready", () => {
     console.log(`Logged in as ${client.user.tag}`);
@@ -88,12 +89,10 @@ client.on("message", (msg) => {
                 msg.channel.send("Draw");
                 break;
                 case(1):
-                msg.channel.send("You win");
                 plays[index].pWins += 1;
                 plays[index].turns += 1;
                 break;
                 case(2):
-                msg.channel.send("I win");
                 plays[index].aWins += 1;
                 plays[index].turns += 1;
                 break;
@@ -103,15 +102,12 @@ client.on("message", (msg) => {
             msg.channel.send("Rock");
             switch(a){
                 case(0):
-                msg.channel.send("I win");
                 plays[index].aWins += 1;
                 plays[index].turns += 1;
                 break;
                 case(1):
-                msg.channel.send("Draw");
                 break;
                 case(2):
-                msg.channel.send("You win");
                 plays[index].pWins += 1;
                 plays[index].turns += 1;
                 break;
@@ -121,22 +117,19 @@ client.on("message", (msg) => {
             msg.channel.send("Paper");
             switch(a){
                 case(0):
-                msg.channel.send("You win");
                 plays[index].pWins += 1;
                 plays[index].turns += 1;
                 break;
                 case(1):
-                msg.channel.send("I win");
                 plays[index].aWins += 1;
                 plays[index].turns += 1;
                 break;
                 case(2):
-                msg.channel.send("Draw");
                 break;
             }
         }
 
-        if(plays[index].turns == 3){
+        if(plays[index].turns == 2){
             if(plays[index].pWins > plays[index].aWins){
                 msg.channel.send("You won. You have earned your freedom.");
                 plays.splice(index,1);
@@ -158,7 +151,8 @@ client.on("message", (msg) => {
                 return;
             }
         }
-        msg.channel.send("Another round.");
+        msg.channel.send(plays[index].pWins + " : " + plays[index].aWins);
+        msg.channel.send("AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHH daniel gib mir meine dev rolle!");
     }
 })
 
@@ -167,8 +161,6 @@ client.on('voiceStateUpdate', (oldState, newState) => {
     if (oldState.member.user.bot) return;
 
     if(newState.channelID == chid){
-        client.channels.cache.get(textID).send(oldState.member.user.username + ", play rock-paper-scissors with me to earn your freedom. Wait until bot says 'another round' until you make your next move! (please type in lowercase. working on it)");
-        newState.member.roles.add(newState.guild.roles.cache.get(roleID));
         if(playing){
             return;
         }
@@ -177,8 +169,27 @@ client.on('voiceStateUpdate', (oldState, newState) => {
         if(oldState.channelID != null){
             id = oldState.channelID;
         }
-        channelIDS.push({userID: oldState.member.id, chid: id});
+        var ids = [];
+
+        ids = oldState.member.roles.cache.array;
+        console.log(ids);
+
+        channelIDS.push({userID: oldState.member.id, chid: id, roleIDS: ids});
+        client.channels.cache.get(textID).send(oldState.member.user.username + ", play rock-paper-scissors with me to earn your freedom. Wait until bot says 'another round' until you make your next move! (please type in lowercase. working on it)");
+        newState.member.roles.add(newState.guild.roles.cache.get(roleID));
         playing = true;
+    }
+    if(oldState.channelID == chid){
+        var index = -1;
+        for(i = 0; i < plays.length; i++){
+            if(msg.member.id == plays[i].uID){
+                index = i;
+            }
+        }
+
+        if(index != -1){
+            win(newState.member.id);
+        }
     }
 })
 
