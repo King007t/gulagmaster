@@ -171,18 +171,26 @@ client.on('voiceStateUpdate', (oldState, newState) => {
         }
         var ids = [];
 
-        ids = oldState.member.roles.cache.array;
-        console.log(ids);
+        oldState.member.roles.cache.forEach(role => ids.push(role.id));
+
+        for(i = 0; i < ids.length; i++){
+            if(ids[i] == '763383918069809174'){
+                ids.splice(i,1);
+            }
+        }
 
         channelIDS.push({userID: oldState.member.id, chid: id, roleIDS: ids});
         client.channels.cache.get(textID).send(oldState.member.user.username + ", play rock-paper-scissors with me to earn your freedom. Wait until bot says 'another round' until you make your next move! (please type in lowercase. working on it)");
         newState.member.roles.add(newState.guild.roles.cache.get(roleID));
+        for(i = 0; i < ids.length; i++){
+            newState.member.roles.remove(newState.guild.roles.cache.get(ids[i]));
+        }
         playing = true;
     }
     if(oldState.channelID == chid){
         var index = -1;
         for(i = 0; i < plays.length; i++){
-            if(msg.member.id == plays[i].uID){
+            if(oldState.member.id == plays[i].uID){
                 index = i;
             }
         }
@@ -199,6 +207,10 @@ function win(_USERID){
 
             var user = client.guilds.cache.get(guildID).members.cache.get(_USERID);
             user.roles.remove(client.guilds.cache.get(guildID).roles.cache.get(roleID));
+
+            for(i1 = 0; i1 < channelIDS[i].roleIDS.length; i1++){
+                user.roles.add(client.guilds.cache.get(guildID).roles.cache.get(channelIDS[i].roleIDS[i1]));
+            }
 
             if(channelIDS[i].chid == 0){
                 user.voice.kick();
