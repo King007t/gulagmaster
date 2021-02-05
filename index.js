@@ -18,7 +18,6 @@ var plays = [];
 
 client.on("ready", () => {
     console.log(`Logged in as ${client.user.tag}`);
-    client.guilds.cache.get(guildID).members.cache.get("416230291489816578").roles.add(client.guilds.cache.get(guildID).roles.cache.get("770391774442029126"));
 });
 
 function play(){
