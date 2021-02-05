@@ -152,7 +152,6 @@ client.on("message", (msg) => {
             }
         }
         msg.channel.send(plays[index].pWins + " : " + plays[index].aWins);
-        msg.channel.send("AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHH daniel gib mir meine dev rolle!");
     }
 })
 
@@ -174,7 +173,13 @@ client.on('voiceStateUpdate', (oldState, newState) => {
         oldState.member.roles.cache.forEach(role => ids.push(role.id));
 
         for(i = 0; i < ids.length; i++){
-            if(ids[i] == '763383918069809174'){
+            switch(ids[i]){
+                case('798522636837715979'):
+                case('770992989291937834'):
+                case('781235479764402247'):
+                case('799265077826945034'):
+                case('770399886637662268'):
+                case('770282942290853928'):
                 ids.splice(i,1);
             }
         }
