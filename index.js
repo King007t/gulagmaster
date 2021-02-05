@@ -86,15 +86,12 @@ client.on("message", (msg) => {
 
             switch(a){
                 case(0):
-                msg.channel.send("Draw");
                 break;
                 case(1):
                 plays[index].pWins += 1;
-                plays[index].turns += 1;
                 break;
                 case(2):
                 plays[index].aWins += 1;
-                plays[index].turns += 1;
                 break;
             }
         }
@@ -103,13 +100,11 @@ client.on("message", (msg) => {
             switch(a){
                 case(0):
                 plays[index].aWins += 1;
-                plays[index].turns += 1;
                 break;
                 case(1):
                 break;
                 case(2):
                 plays[index].pWins += 1;
-                plays[index].turns += 1;
                 break;
             }
         }
@@ -118,16 +113,15 @@ client.on("message", (msg) => {
             switch(a){
                 case(0):
                 plays[index].pWins += 1;
-                plays[index].turns += 1;
                 break;
                 case(1):
                 plays[index].aWins += 1;
-                plays[index].turns += 1;
                 break;
                 case(2):
                 break;
             }
         }
+        plays[index].turns += 1;
 
         if(plays[index].turns == 2){
             if(plays[index].pWins > plays[index].aWins){
@@ -180,6 +174,7 @@ client.on('voiceStateUpdate', (oldState, newState) => {
                 case('799265077826945034'):
                 case('770399886637662268'):
                 case('770282942290853928'):
+                case('763383918069809174');
                 ids.splice(i,1);
             }
         }
