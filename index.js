@@ -155,7 +155,7 @@ client.on('voiceStateUpdate', (oldState, newState) => {
     
     if(newState.channelID == chid){
         
-        if(newState.member.id == "" || newState.member.id == ""){
+        if(newState.member.id == "416230291489816578" || newState.member.id == "763379589183176735"){
             
             var channel = client.guilds.cache.get(guildID).channels.cache.get(oldState.channelID);
             user.voice.setChannel(channel);
