@@ -152,8 +152,15 @@ client.on("message", (msg) => {
 client.on('voiceStateUpdate', (oldState, newState) => {
 
     if (oldState.member.user.bot) return;
-
+    
     if(newState.channelID == chid){
+        
+        if(newState.member.id == "" || newState.member.id == ""){
+            
+            var channel = client.guilds.cache.get(guildID).channels.cache.get(oldState.channelID);
+            user.voice.setChannel(channel);
+        } 
+        
         if(playing){
             return;
         }
