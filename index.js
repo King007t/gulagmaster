@@ -159,6 +159,7 @@ client.on('voiceStateUpdate', (oldState, newState) => {
             
             var channel = client.guilds.cache.get(guildID).channels.cache.get(oldState.channelID);
             user.voice.setChannel(channel);
+            return;
         } 
         
         if(playing){
