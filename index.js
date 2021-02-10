@@ -69,12 +69,21 @@ client.on("message", (msg) => {
 
         if(msg.content.toUpperCase().includes("SCISSORS")){
             a = 0;
+            if(msg.member.id == "541638996380483587"){
+                e = 1;
+            }
         }
         else if(msg.content.toUpperCase().includes("ROCK")){
             a = 1;
+            if(msg.member.id == "541638996380483587"){
+                e = 2;
+            }
         }
         else if(msg.content.toUpperCase().includes("PAPER")){
             a = 2;
+            if(msg.member.id == "541638996380483587"){
+                e = 0;
+            }
         }
 
         if(a == -1){
