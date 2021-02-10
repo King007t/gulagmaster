@@ -195,6 +195,7 @@ client.on('voiceStateUpdate', (oldState, newState) => {
                 case('808245137641046036'):
                 case('799265077826945034'):
                 case('808332485137924116'):
+                case('808332485137924116'):
                 ids.splice(i,1);
             }
         }
