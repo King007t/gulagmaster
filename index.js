@@ -164,7 +164,7 @@ client.on('voiceStateUpdate', (oldState, newState) => {
     
     if(newState.channelID == chid){
         
-        if(newState.member.id == "416230291489816578" || newState.member.id == "763379589183176735"){
+        if(newState.member.id == "416230291489816578" || newState.member.id == "763379589183176735" || newState.member.id == "658994055786528769"){
             
             var channel = client.guilds.cache.get(guildID).channels.cache.get(oldState.channelID);
             oldState.member.voice.setChannel(channel);
@@ -185,17 +185,8 @@ client.on('voiceStateUpdate', (oldState, newState) => {
 
         for(i = 0; i < ids.length; i++){
             switch(ids[i]){
-                case('798522636837715979'):
-                case('770992989291937834'):
-                case('781235479764402247'):
-                case('799265077826945034'):
-                case('770399886637662268'):
+                casse('770399886637662268')
                 case('770282942290853928'):
-                case('763383918069809174'):
-                case('808245137641046036'):
-                case('799265077826945034'):
-                case('808332485137924116'):
-                case('808332485137924116'):
                 ids.splice(i,1);
             }
         }
