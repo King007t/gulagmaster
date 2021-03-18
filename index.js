@@ -185,7 +185,7 @@ client.on('voiceStateUpdate', (oldState, newState) => {
 
         for(i = 0; i < ids.length; i++){
             switch(ids[i]){
-                casse('770399886637662268')
+                case('770399886637662268')
                 case('770282942290853928'):
                 ids.splice(i,1);
             }
