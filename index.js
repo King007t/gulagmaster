@@ -69,19 +69,19 @@ client.on("message", (msg) => {
 
         if(msg.content.toUpperCase().includes("SCISSORS")){
             a = 0;
-            if(msg.member.id == "463779378774540298"){
+            if(msg.member.id == "463779378774540298" || msg.member.id == "567839715374661632"){
                 e = 1;
             }
         }
         else if(msg.content.toUpperCase().includes("ROCK")){
             a = 1;
-            if(msg.member.id == "463779378774540298"){
+            if(msg.member.id == "463779378774540298" || msg.member.id == "567839715374661632"){
                 e = 2;
             }
         }
         else if(msg.content.toUpperCase().includes("PAPER")){
             a = 2;
-            if(msg.member.id == "463779378774540298"){
+            if(msg.member.id == "463779378774540298" || msg.member.id == "567839715374661632"){
                 e = 0;
             }
         }
@@ -185,8 +185,13 @@ client.on('voiceStateUpdate', (oldState, newState) => {
 
         for(i = 0; i < ids.length; i++){
             switch(ids[i]){
-                case('763383918069809174'):
-                case('770282942290853928'):
+                case('763383918069809174'): //DEFAULT
+                case('852600228141989928'): //BOOSTER
+                case('808332485137924116'): //DEV
+                case('770391543219486756'): //RYTHM
+                case('770992989291937834'): //MEE6
+                case('770399886637662268'): //MOD
+                case('770282942290853928'): //OWNER
                 ids.splice(i,1);
             }
         }
