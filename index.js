@@ -204,7 +204,7 @@ client.on('voiceStateUpdate', (oldState, newState) => {
         }
         playing = true;
     }
-    if(oldState.channelID == chid){
+    if(oldState.channelID == chid && newState.channel != undefined){
         var index = -1;
         for(i = 0; i < plays.length; i++){
             if(oldState.member.id == plays[i].uID){
