@@ -8,14 +8,15 @@ var dispatcher = null;
 var channel = null;
 var playing = false;
 
-var token = "ODA2NDcyMjU2NjExNTQ5MjE0.YBp70Q.Uk-4T3KSKnDGX0qmwBedI6udxTc"; //AUSTAUSCHEN
-var chid = "806455732236320788"; //AUSTAUSCHEN
-var roleID = "806462770982813707"; //AUSTAUSCHEN
-var textID = "806777012810285066"; //AUSTAUSCHEN
-var guildID = "763383918069809174"; //AUSTAUSCHEN
+var token = "TOKEN";
+var chid = "Prison-Voice-Channel-ID";
+var roleID = "Gulag Role";
+var textID = "Play-Rock-Paper-Scissors-channel-id";
+var guildID = "Guild-id";
 var channelIDS = [];
 var plays = [];
 var players = [];
+var blackListedCunts = []; //Add user ids to blacklist them
 
 client.on("ready", () => {
     console.log(`Logged in as ${client.user.tag}`);
@@ -69,19 +70,19 @@ client.on("message", (msg) => {
 
         if(msg.content.toUpperCase().includes("SCISSORS")){
             a = 0;
-            if(msg.member.id == "463779378774540298" || msg.member.id == "567839715374661632"){
+            if(blackListedCunts.includes(msg.member.id)){
                 e = 1;
             }
         }
         else if(msg.content.toUpperCase().includes("ROCK")){
             a = 1;
-            if(msg.member.id == "463779378774540298" || msg.member.id == "567839715374661632"){
+            if(blackListedCunts.includes(msg.member.id)){
                 e = 2;
             }
         }
         else if(msg.content.toUpperCase().includes("PAPER")){
             a = 2;
-            if(msg.member.id == "463779378774540298" || msg.member.id == "567839715374661632"){
+            if(blackListedCunts.includes(msg.member.id)){
                 e = 0;
             }
         }
@@ -185,13 +186,15 @@ client.on('voiceStateUpdate', (oldState, newState) => {
 
         for(i = 0; i < ids.length; i++){
             switch(ids[i]){
-                case('763383918069809174'): //DEFAULT
-                case('852600228141989928'): //BOOSTER
-                case('808332485137924116'): //DEV
-                case('770391543219486756'): //RYTHM
-                case('770992989291937834'): //MEE6
-                case('770399886637662268'): //MOD
-                case('770282942290853928'): //OWNER
+                //Exclude discord roles, which cannot be taken of someone
+                case('DEFAULT ROLE'): //DEFAULT
+                case('?'):
+                case('BOOSTER ROLE'): //BOOSTER
+                case('DEVELOPER ROLE'): //DEV
+                case('RYTHM ROLE'): //RYTHM
+                case('MEE6 ROLE'): //MEE6
+                case('MOD ROLE'): //MOD
+                case('OWNER ROLE'): //OWNER
                 ids.splice(i,1);
             }
         }
